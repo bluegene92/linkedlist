@@ -3,16 +3,53 @@
 
 #include "node.h"
 
+/**
+    Organize data in a link Structure
+    Using custom class Node
+*/
 template <class T>
 class LinkedList
 {
 public:
     LinkedList();
+
+    /**
+        Insert a new node at the start
+        i.e [new]-[]-[]->NULL
+        @param key - the key for the node
+        @param data - the data to be stored in the node
+    */
     void insertNodeHead(int key, T data);
+
+    /**
+        Traverse the linked list and display each node key & data,
+        start at the head
+    */
     void print() const;
+
+    /**
+        Traverse the linked list and display each node key & data,
+        start at the tail
+    */
     void printReverse() const;
+
+    /**
+        Check if linked list is empty
+        @return true if linked list is empty
+        @return false if linked list is not empty
+    */
     bool isEmpty() const;
+
+    /**
+        Delete the node start at the head
+        @return true if node deleted
+    */
     bool deleteNodeHead();
+
+    /**
+        Delete the node with given key
+        @param key - the key of the node to be deleted
+    */
     void deleteNodeWithKey(int key);
 private:
     Node<T>* head;
@@ -109,7 +146,6 @@ void LinkedList<T>::deleteNodeWithKey(int key)
         if (ptr_temp->get_key() == key)
         {
             //check if node is the head or tail
-            std::cout << head->get_key() << std::endl;
             if (head->get_key() == key)
             {
                 ptr_temp->get_next()->set_prev(NULL);
@@ -137,6 +173,5 @@ void LinkedList<T>::deleteNodeWithKey(int key)
         ptr_temp = ptr_temp->get_next();
     }
 }
-
 
 #endif
